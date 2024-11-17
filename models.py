@@ -1,10 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import app
-from flask_migrate import Migrate
 from datetime import datetime
 
 # database named db
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
 # 1. Table: users
 class Users(db.Model):
@@ -46,12 +44,12 @@ class ServiceProfessional(db.Model):
     __tablename__ = 'service_professionals'
 
     professional_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id', nullable = False))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable = False)
     service_type_id = db.Column(db.Integer, db.ForeignKey('service_types.service_type_id'), nullable = False)
     rating = db.Column(db.Float)
     experience = db.Column(db.Integer)
     price = db.Column(db.Float, nullable = False) #price set by professional for each service type
-    service_name = db.Column(db.ForeignKey('service_types.name'), nullable = False)
+    service_name = db.Column(db.String(100), nullable = False)
     file_path = db.Column(db.String(255)) # storing the file path of the document verification PDF
     
     # user = db.relationship('User', backref = 'service_professional')
@@ -80,9 +78,9 @@ class ServiceRequest(db.Model):
     __tablename__ = 'service_requests'
 
     service_request_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    service_id = db.Column (db.Integer, db.ForeignKey('services.service_id'), nullable = False)
-    customer_id = db.Column (db.Integer, db.ForeignKey('customers.customer_id'), nullable = False)
-    professional_id = db.Column (db.Integer, db.ForeignKey('service_professionals.professional_id'))
+    service_id = db.Column(db.Integer, db.ForeignKey('services.service_id'), nullable=False)
+    customer_id = db.Column(db.Integer, db.ForeignKey('customers.customer_id'), nullable=False)
+    professional_id = db.Column(db.Integer, db.ForeignKey('service_professionals.professional_id'))
     date_of_request = db.Column(db.DateTime, default = datetime.utcnow)
     date_of_completion = db.Column(db.DateTime)
     status = db.Column(db.String(50), nullable = False, default = 'requested') #by default 'reqeusted' value assigned
@@ -110,7 +108,7 @@ class Activity(db.Model):
     __tablename__ = 'activities'
 
     activity_id = db.Column(db.Integer, primary_key = True, autoincrement = True)
-    service_request_id = db.Column(db.Integer, db.ForeignKey('service_request.service_request_id', nullable = False))
+    service_request_id = db.Column(db.Integer, db.ForeignKey('service_request.service_request_id'), nullable = False)
     action = db.Column (db.String, nullable = False)
     timestamp = db.Column(db.DateTime, default = datetime.utcnow)
     notes = db.Column(db.Text)
