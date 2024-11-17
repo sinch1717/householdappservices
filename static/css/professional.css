@@ -1,0 +1,30 @@
+
+.navbar {
+    background-color: #55bd6d; 
+}
+
+footer {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.alert-professional {
+    background-color: #e9f7ef;
+    border-left: 4px solid #28a745;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.table-professional {
+    border: 1px solid #dee2e6;
+    margin-top: 20px;
+}
+
+.table-professional th {
+    background-color: #28a745;
+    color: white;
+}
+
+.table-professional tr:hover {
+    background-color: #d4edda;
+}

@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    margin-bottom: 60px; /* Ensure content doesn't overlap the footer */
+}
+
+.navbar {
+    background-color: #737679;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white ;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #d4d4d4 ;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Prevent overlapping of content with footer */
+.container {
+    padding-bottom: 60px;
+}
+
+/* Adjust page content */
+.container-fluid {
+    padding-top: 20px;
+}
+
+/* Links in footer */
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
